@@ -1,0 +1,268 @@
+{
+    "info": {
+        "name": "LeadPro API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/auth/register", "host": ["{{base_url}}"], "path": ["auth", "register"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"name\": \"Arun Yadav\",\n    \"email\": \"heyarunyadav@gmail.com\",\n    \"phone\": \"9876543210\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                },
+                {
+                    "name": "Login OTP",
+                    "request": {
+                        "method": "POST",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/auth/login-otp", "host": ["{{base_url}}"], "path": ["auth", "login-otp"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"email\": \"admin@leadpro.com\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                },
+                {
+                    "name": "Verify OTP",
+                    "request": {
+                        "method": "POST",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/auth/verify-otp", "host": ["{{base_url}}"], "path": ["auth", "verify-otp"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"email\": \"admin@leadpro.com\",\n    \"otp\": \"123456\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                }
+            ]
+        },
+        {
+            "name": "User",
+            "item": [
+                {
+                    "name": "Get Profile",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "GET",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/user", "host": ["{{base_url}}"], "path": ["user"]}
+                    }
+                },
+                {
+                    "name": "Update Profile",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "PUT",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/user/profile", "host": ["{{base_url}}"], "path": ["user", "profile"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"name\": \"Admin Updated\",\n    \"phone\": \"9876543210\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Dashboard",
+            "item": [
+                {
+                    "name": "Stats",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "GET",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/dashboard/stats", "host": ["{{base_url}}"], "path": ["dashboard", "stats"]}
+                    }
+                },
+                {
+                    "name": "Upcoming Follow-ups",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "GET",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/dashboard/upcoming-followups", "host": ["{{base_url}}"], "path": ["dashboard", "upcoming-followups"]}
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Leads",
+            "item": [
+                {
+                    "name": "List Leads",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "GET",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/leads", "host": ["{{base_url}}"], "path": ["leads"]}
+                    }
+                },
+                {
+                    "name": "Create Lead",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "POST",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/leads", "host": ["{{base_url}}"], "path": ["leads"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"title\": \"New Project Inquiry\",\n    \"contact_person\": \"John Doe\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                },
+                {
+                    "name": "Get Lead",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "GET",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/leads/1", "host": ["{{base_url}}"], "path": ["leads", "1"]}
+                    }
+                },
+                {
+                    "name": "Update Lead",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "PUT",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/leads/1", "host": ["{{base_url}}"], "path": ["leads", "1"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"priority\": \"high\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                },
+                {
+                    "name": "Update Lead Status",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "PATCH",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/leads/1/status", "host": ["{{base_url}}"], "path": ["leads", "1", "status"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"status\": \"contacted\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                },
+                {
+                    "name": "Delete Lead",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "DELETE",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/leads/1", "host": ["{{base_url}}"], "path": ["leads", "1"]}
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Notes",
+            "item": [
+                {
+                    "name": "Add Note",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "POST",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/leads/1/notes", "host": ["{{base_url}}"], "path": ["leads", "1", "notes"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"content\": \"Client requested a callback tomorrow.\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                },
+                {
+                    "name": "Update Note",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "PUT",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/notes/1", "host": ["{{base_url}}"], "path": ["notes", "1"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"content\": \"Client requested a callback tomorrow at 5PM.\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                },
+                {
+                    "name": "Delete Note",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "DELETE",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/notes/1", "host": ["{{base_url}}"], "path": ["notes", "1"]}
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reminders",
+            "item": [
+                {
+                    "name": "List Reminders",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "GET",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/reminders", "host": ["{{base_url}}"], "path": ["reminders"]}
+                    }
+                },
+                {
+                    "name": "Add Reminder",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "POST",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/reminders", "host": ["{{base_url}}"], "path": ["reminders"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"lead_id\": 1,\n    \"title\": \"Follow up call\",\n    \"reminder_datetime\": \"2024-12-31 10:00:00\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                },
+                {
+                    "name": "Update Reminder Status",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "PATCH",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/reminders/1/status", "host": ["{{base_url}}"], "path": ["reminders", "1", "status"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"status\": \"completed\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Pages & Support",
+            "item": [
+                {
+                    "name": "About Us",
+                    "request": {
+                        "method": "GET",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/pages/about", "host": ["{{base_url}}"], "path": ["pages", "about"]}
+                    }
+                },
+                {
+                    "name": "Privacy Policy",
+                    "request": {
+                        "method": "GET",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/pages/privacy-policy", "host": ["{{base_url}}"], "path": ["pages", "privacy-policy"]}
+                    }
+                },
+                {
+                    "name": "Support Info",
+                    "request": {
+                        "method": "GET",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/support/info", "host": ["{{base_url}}"], "path": ["support", "info"]}
+                    }
+                },
+                {
+                    "name": "Submit Support Message",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "POST",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/support/messages", "host": ["{{base_url}}"], "path": ["support", "messages"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"subject\": \"Need help with leads\",\n    \"message\": \"Can you add a custom priority?\"\n}", "options": {"raw": {"language": "json"}}}
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000/api/v1",
+            "type": "string"
+        },
+        {
+            "key": "bearer_token",
+            "value": "YOUR_SANCTUM_TOKEN",
+            "type": "string"
+        }
+    ]
+}

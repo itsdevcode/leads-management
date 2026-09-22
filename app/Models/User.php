@@ -23,12 +23,12 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['name', 'email', 'password', 'phone', 'avatar', 'role', 'is_active'])]
 #[Hidden(['password', 'two_factor_secret', 'two_factor_recovery_codes', 'remember_token'])]
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, \Laravel\Sanctum\HasApiTokens;
 
     /**
      * Get the attributes that should be cast.
@@ -40,6 +40,27 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_active' => 'boolean',
         ];
+    }
+
+    public function leads()
+    {
+        return $this->hasMany(Lead::class);
+    }
+
+    public function leadNotes()
+    {
+        return $this->hasMany(LeadNote::class);
+    }
+
+    public function reminders()
+    {
+        return $this->hasMany(Reminder::class);
+    }
+
+    public function supportMessages()
+    {
+        return $this->hasMany(SupportMessage::class);
     }
 }
