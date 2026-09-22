@@ -24,7 +24,8 @@ Route::prefix('v1')->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         // User Profile
         Route::get('/user', [UserController::class, 'profile']);
-        Route::put('/user/profile', [UserController::class, 'updateProfile']);
+        Route::post('/user/profile', [UserController::class, 'updateProfile']);
+        Route::post('/user/profile/verify-email', [UserController::class, 'verifyEmailOtp']);
         
         // Dashboard
         Route::get('/dashboard/stats', [DashboardController::class, 'stats']);

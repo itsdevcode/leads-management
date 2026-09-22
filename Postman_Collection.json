@@ -52,10 +52,28 @@
                     "name": "Update Profile",
                     "request": {
                         "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
-                        "method": "PUT",
+                        "method": "POST",
                         "header": [{"key": "Accept", "value": "application/json"}],
                         "url": {"raw": "{{base_url}}/user/profile", "host": ["{{base_url}}"], "path": ["user", "profile"]},
-                        "body": {"mode": "raw", "raw": "{\n    \"name\": \"Admin Updated\",\n    \"phone\": \"9876543210\"\n}", "options": {"raw": {"language": "json"}}}
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {"key": "name", "value": "Admin Updated", "type": "text"},
+                                {"key": "phone", "value": "9876543210", "type": "text"},
+                                {"key": "email", "value": "newadmin@example.com", "type": "text"},
+                                {"key": "avatar", "type": "file", "src": []}
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Verify Email OTP",
+                    "request": {
+                        "auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{bearer_token}}", "type": "string"}]},
+                        "method": "POST",
+                        "header": [{"key": "Accept", "value": "application/json"}],
+                        "url": {"raw": "{{base_url}}/user/profile/verify-email", "host": ["{{base_url}}"], "path": ["user", "profile", "verify-email"]},
+                        "body": {"mode": "raw", "raw": "{\n    \"email\": \"newadmin@example.com\",\n    \"otp\": \"123456\"\n}", "options": {"raw": {"language": "json"}}}
                     }
                 }
             ]
