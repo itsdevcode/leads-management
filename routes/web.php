@@ -11,4 +11,11 @@ Route::get('/', function () {
 //     Route::inertia('dashboard', 'dashboard')->name('dashboard');
 // });
 
+Route::get('/setup-app', function() {
+    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+    \Illuminate\Support\Facades\Artisan::call('optimize');
+    return 'Setup and Optimization Complete! Caches cleared.';
+});
+
 // require __DIR__.'/settings.php';
